@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F8F9FA" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <title>Sohel Matubber | Electrical Engineering &amp; Solar Energy Research</title>
+  <meta name="description" content="Academic portfolio of Sohel Matubber, Electrical and Electronic Engineering undergraduate at Jamalpur Science &amp; Technology University, researching lead-free photovoltaic devices and renewable energy." />
+  <meta name="keywords" content="Sohel Matubber, Electrical and Electronic Engineering, Solar Cell Research, SCAPS-1D, Lead-Free Double-Absorber Solar Cells, Photovoltaics, Renewable Energy, Bangladesh" />
+  <meta name="author" content="Sohel Matubber" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sohel Matubber | Academic &amp; Solar Energy Research Portfolio" />
+  <meta property="og:description" content="Electrical and Electronic Engineering undergraduate at Jamalpur Science &amp; Technology University. Research interests include solar photovoltaics, SCAPS-1D modelling and renewable energy." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sohel Matubber | Academic Portfolio" />
+  <meta name="twitter:description" content="Solar photovoltaic device modelling, SCAPS-1D research and renewable energy interests." />
+
+  <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            canvas: '#F8F9FA',
+            ink: '#171717',
+            muted: '#52525B',
+            line: '#E5E7EB',
+            royal: {
+              600: '#2563EB',
+              700: '#1D4ED8',
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+            },
+            emeraldBadge: {
+              600: '#059669',
+              50: '#ECFDF5',
+              100: '#D1FAE5',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base Academic Typography & Surface Defaults */
+    html, body {
+      background-color: #F8F9FA;
+      color: #171717;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    }
+
+    /* Subtle Card Elevation Matching Reference Design */
+    .academic-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Interactive Solar Cell Layer Transitions */
+    .solar-layer-btn {
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .solar-layer-btn:hover {
+      transform: translateX(4px);
+    }
+    .solar-layer-btn.is-active {
+      transform: translateX(6px);
+      box-shadow: 0 6px 18px -4px rgba(37, 99, 235, 0.22);
+    }
+
+    /* Subtle Photon Illumination Motion */
+    @keyframes subtlePhotonPulse {
+      0%, 100% { transform: translateY(0px); opacity: 0.75; }
+      50% { transform: translateY(3px); opacity: 1; }
+    }
+    .photon-indicator {
+      animation: subtlePhotonPulse 2.4s ease-in-out infinite;
+    }
+
+    /* ==================== DEDICATED A4 PRINT-TO-PDF CV STYLES ==================== */
+    @page {
+      size: A4;
+      margin: 14mm 16mm;
+    }
+
+    @media print {
+      html, body {
+        background: #FFFFFF !important;
+        color: #171717 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+
+      /* Hide all interactive UI chrome, navbar, main site, and modals */
+      body > *:not(#printable-cv-sheet) {
+        display: none !important;
+      }
+
+      /* Render dedicated A4 CV sheet cleanly across pages */
+      #printable-cv-sheet {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+        color: #171717 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      .cv-avoid-break {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+
+    /* Reference-inspired portfolio header and hero */
+    html, body { background: #f7f6f3; }
+    header {
+      background: rgba(250,249,246,.96) !important;
+      border-bottom-color: #e5e0d8 !important;
+    }
+    #desktop-nav-links { gap: 2px !important; }
+    #desktop-nav-links a {
+      font-size: 14px !important;
+      font-weight: 650 !important;
+      color: #77736d !important;
+      padding: 9px 10px !important;
+    }
+    #desktop-nav-links a:hover { color: #1d4ed8 !important; background: #eef2ff !important; }
+    #desktop-nav-links a span:nth-child(2) {
+      width: 21px; height: 21px; border-radius: 999px;
+      background: #2563eb; color: #fff; font-size: 11px;
+    }
+    .reference-hero {
+      background:
+        radial-gradient(ellipse at 5% 20%, rgba(225,232,244,.72), transparent 34%),
+        linear-gradient(105deg, #f4f4f2 0%, #fbfaf7 72%);
+      border-bottom: 1px solid #e7e2da;
+      margin: -1px calc((100vw - min(100vw, 1280px))/ -2) 0;
+      padding: 56px max(24px, calc((100vw - 1120px)/2)) 38px;
+    }
+    .reference-hero-top {
+      display: grid; grid-template-columns: 260px minmax(0,1fr);
+      gap: 62px; align-items: center; max-width: 1120px; margin: 0 auto;
+    }
+    .reference-portrait-wrap { display:flex; justify-content:center; }
+    .reference-portrait {
+      width: 242px; height: 258px; padding: 5px;
+      background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 30px; box-shadow: 0 14px 32px rgba(20,30,50,.14);
+      overflow: hidden;
+    }
+    .reference-portrait img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 20%; border-radius:25px; }
+    .reference-identity { min-width:0; }
+    .reference-eyebrow { color:#2563eb; font-size:11px; font-weight:800; letter-spacing:.16em; margin-bottom:8px; }
+    .reference-identity h1 {
+      color:#191919; font-size:clamp(38px,5vw,64px); line-height:1.08;
+      letter-spacing:-.055em; font-weight:800; margin:0;
+    }
+    .reference-identity > p {
+      color:#45413d; font-size:18px; line-height:1.65; margin:12px 0 18px;
+    }
+    .reference-actions { display:flex; flex-wrap:wrap; align-items:center; gap:9px; }
+    .reference-action {
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      padding:11px 17px; min-height:46px; border-radius:12px;
+      border:1px solid #d9d2c8; background:#fff; color:#393632;
+      font-size:14px; font-weight:700; text-decoration:none; cursor:pointer;
+      transition:all .18s ease;
+    }
+    .reference-action:hover { border-color:#2563eb; color:#1d4ed8; transform:translateY(-1px); }
+    .reference-badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:13px; }
+    .reference-badge {
+      display:inline-flex; align-items:center; padding:11px 17px;
+      border-radius:999px; background:#2563eb; color:#fff;
+      font-size:13px; font-weight:750; text-decoration:none;
+    }
+    .reference-badge:hover { background:#1d4ed8; }
+    .reference-biography { max-width:1120px; margin:48px auto 0; }
+    .reference-biography p {
+      color:#45413d; font-size:17px; line-height:1.9; margin:0;
+      text-align:justify;
+    }
+    .reference-meta {
+      max-width:1120px; margin:24px auto 0; display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .reference-meta > div {
+      background:rgba(255,255,255,.7) !important; border:1px solid #e4ded5 !important;
+      border-radius:12px !important; padding:10px 13px !important;
+    }
+    main { padding-top: 0 !important; }
+    #home { border:0 !important; box-shadow:none !important; border-radius:0 !important; }
+    .academic-card { border-color:#e7e3dc; box-shadow:0 2px 8px rgba(20,20,20,.035); }
+    @media (max-width: 900px) {
+      .reference-hero { padding:36px 22px 30px; margin:0 -22px; }
+      .reference-hero-top { grid-template-columns:1fr; gap:26px; text-align:center; }
+      .reference-portrait { width:205px; height:220px; }
+      .reference-eyebrow { margin-bottom:10px; }
+      .reference-actions, .reference-badges { justify-content:center; }
+      .reference-identity > p { font-size:16px; }
+      .reference-biography { margin-top:32px; }
+      .reference-biography p { font-size:15px; text-align:left; }
+      .reference-meta { justify-content:center; }
+    }
+    @media (max-width: 480px) {
+      .reference-identity h1 { font-size:36px; }
+      .reference-action { flex:1 1 calc(50% - 8px); padding:10px 11px; }
+      .reference-badge { font-size:11px; padding:10px 12px; }
+    }
+
+
+    /* Final audit refinements */
+    :root { color-scheme: light; }
+    html { scroll-padding-top: 88px; }
+    section[id] { scroll-margin-top: 88px; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid rgba(37,99,235,.55);
+      outline-offset: 3px;
+    }
+    .reference-about-heading {
+      color:#171717; font-family:'Plus Jakarta Sans',Inter,sans-serif;
+      font-size:20px; font-weight:800; letter-spacing:-.02em; margin-bottom:10px;
+    }
+    .reference-meta { display:none !important; }
+    .reference-hero { background:#f8f9fa; }
+    .reference-identity > p { max-width:760px; }
+    .reference-biography { max-width:1120px; }
+    #contact a { min-width:0; }
+    #contact a:focus-visible { outline-offset:4px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior:auto !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+    }
+
+  </style>
+</head>
+<body class="bg-[#F8F9FA] text-[#171717] selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- ==================== STICKY TOP NAVIGATION BAR ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E5E7EB]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Left Brand Mark & Avatar -->
+        <a href="#home" class="flex items-center gap-2.5 shrink-0 focus:outline-none group">
+          <div class="w-9 h-9 rounded-full overflow-hidden border border-[#E5E7EB] bg-[#171717] text-white flex items-center justify-center relative shrink-0">
+            <img
+              id="nav-avatar-img"
+              src=""
+              alt="Sohel Matubber"
+              class="w-full h-full object-cover"
+              onerror="handleAvatarError(this, 'nav-avatar-fallback')"
+            />
+            <span id="nav-avatar-fallback" class="hidden font-display font-bold text-xs tracking-wider text-white">SM</span>
+          </div>
+          <span id="nav-brand-name" class="font-display font-bold text-sm sm:text-base tracking-tight text-[#171717] group-hover:text-[#2563EB] transition-colors">
+            S. MATUBBER
+          </span>
+        </a>
+
+        <!-- Desktop Horizontal Navigation Links (Dynamic Count Badges) -->
+        <nav aria-label="Primary Navigation" id="desktop-nav-links" class="hidden lg:flex items-center gap-1 xl:gap-1.5">
+          <!-- Populated dynamically from PORTFOLIO_DATA -->
+        </nav>
+
+        <!-- Mobile / Tablet Hamburger Button (< 1024px) -->
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+          aria-label="Toggle Navigation Menu"
+          onclick="toggleMobileDrawer()"
+          class="lg:hidden inline-flex items-center justify-center p-2.5 rounded-xl border border-[#E5E7EB] bg-white text-[#171717] hover:bg-[#F8F9FA] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30"
+        >
+          <svg id="hamburger-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="hamburger-icon-close" class="hidden w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile / Tablet Slide-Down Drawer -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-[#E5E7EB] bg-white px-4 pt-3 pb-5 shadow-lg">
+      <nav aria-label="Mobile Navigation" id="mobile-nav-links" class="flex flex-col gap-1">
+        <!-- Populated dynamically from PORTFOLIO_DATA -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12 sm:space-y-16">
+
+    <!-- HERO & ACADEMIC OVERVIEW SECTION — reference-inspired layout -->
+    <section id="home" class="reference-hero scroll-mt-20">
+      <div class="reference-hero-top">
+        <div class="reference-portrait-wrap">
+          <div class="reference-portrait">
+            <img
+              id="hero-avatar-img"
+              src="assets/profile.jpg"
+              alt="Sohel Matubber"
+              onerror="handleAvatarError(this, 'hero-avatar-fallback')"
+            />
+            <div id="hero-avatar-fallback" class="hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 text-[#171717] select-none">
+              <div class="w-20 h-20 rounded-2xl bg-[#171717] text-white flex items-center justify-center font-display font-extrabold text-2xl">SM</div>
+              <span class="mt-3 text-xs text-slate-500">EEE · Solar PV</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reference-identity">
+          <div class="reference-eyebrow">ELECTRICAL &amp; ELECTRONIC ENGINEERING</div>
+          <h1 id="hero-full-name">Sohel Matubber</h1>
+          <p id="hero-subtitle">B.Sc. EEE Student | Solar Photovoltaic Device Modelling | Renewable Energy Research</p>
+
+          <div id="hero-actions-bar" class="reference-actions">
+            <a href="mailto:sh2024979@gmail.com" class="reference-action" aria-label="Email Sohel Matubber">✉ <span>Email</span></a>
+            <a href="https://www.linkedin.com/in/sohel-matubber" target="_blank" rel="noopener noreferrer" class="reference-action" aria-label="Open LinkedIn profile">in <span>LinkedIn</span></a>
+            <button type="button" onclick="openCVModal()" class="reference-action">▤ <span>View CV</span></button>
+            <a href="documents/Sohel_Matubber_Academic_CV.docx" download class="reference-action">↓ <span>Download CV</span></a>
+            <div id="hero-optional-links" class="contents"></div>
+          </div>
+
+          <div class="reference-badges">
+            <a href="#research" class="reference-badge">Explore my research</a>
+            <span class="reference-badge">BSc CGPA: 3.24/4.00</span>
+            <span class="reference-badge">Expected graduation: 2027</span>
+            <span class="reference-badge">JSTU · Bangladesh</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-biography">
+        <h2 class="reference-about-heading">About Me</h2>
+        <p id="hero-biography"></p>
+      </div>
+
+      <div id="hero-meta-grid" class="reference-meta" aria-label="Academic information"></div>
+    </section>
+
+    <!-- ==================== RESEARCH & INTERACTIVE SOLAR CELL EXPLORER ==================== -->
+    <section id="research" class="scroll-mt-24 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Research</h2>
+            <span id="section-badge-research" class="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold">1</span>
+          </div>
+          <p class="mt-1 text-sm text-[#52525B]">
+            Numerical device modeling and heterostructure optimization in thin-film photovoltaics.
+          </p>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-medium self-start sm:self-auto">
+          <span class="w-2 h-2 rounded-full bg-[#059669]"></span>
+          <span>SCAPS-1D Numerical Simulation Results &mdash; Not Experimental Measurements</span>
+        </div>
+      </div>
+
+      <!-- Featured Research Study Card -->
+      <article id="featured-research-card" class="academic-card rounded-2xl p-6 sm:p-8 space-y-8">
+        <!-- Populated dynamically from PORTFOLIO_DATA.research -->
+      </article>
+    </section>
+
+    <!-- ==================== TECHNICAL COMPETENCIES & RESEARCH INTERESTS ==================== -->
+    <section id="competencies" class="scroll-mt-24 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Categorized Skills (No Arbitrary Percentage Bars) -->
+      <div class="lg:col-span-8 academic-card rounded-2xl p-6 sm:p-8">
+        <div class="mb-6">
+          <h2 class="text-xl sm:text-2xl font-display font-bold text-[#171717] tracking-tight">
+            Technical Skills &amp; Modeling Competencies
+          </h2>
+          <p class="mt-1 text-sm text-[#52525B]">
+            Categorized engineering, simulation, and scientific analysis capabilities.
+          </p>
+        </div>
+        <div id="skills-categories-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Populated dynamically from PORTFOLIO_DATA.skills -->
+        </div>
+      </div>
+
+      <!-- Core Research Interests -->
+      <div class="lg:col-span-4 academic-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-display font-bold text-[#171717] tracking-tight">
+            Research Interests
+          </h2>
+          <p class="mt-1 text-sm text-[#52525B] mb-5">
+            Primary focus areas in photovoltaics and clean energy systems.
+          </p>
+          <div id="research-interests-list" class="flex flex-wrap gap-2">
+            <!-- Populated dynamically from PORTFOLIO_DATA.researchInterests -->
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-[#E5E7EB] text-xs text-[#52525B]">
+          Open to academic collaboration and Master&rsquo;s research supervision opportunities starting Fall 2027.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <!-- ==================== EXPERIENCES SECTION ==================== -->
+    <section id="experiences" class="scroll-mt-24 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Experiences</h2>
+        <span id="section-badge-experiences" class="hidden items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold"></span>
+      </div>
+      <div id="experiences-container">
+        <!-- Populated dynamically from PORTFOLIO_DATA.experiences -->
+      </div>
+    </section>
+
+    <!-- ==================== TRAINING & FIELD WORKS SECTION ==================== -->
+    <!-- ==================== CERTIFICATES SECTION ==================== -->
+    <section id="certificates" class="scroll-mt-24 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Certificates</h2>
+        <span id="section-badge-certificates" class="hidden items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold"></span>
+      </div>
+      <div id="certificates-container">
+        <!-- Populated dynamically from PORTFOLIO_DATA.certificates -->
+      </div>
+    </section>
+
+    <!-- ==================== TECHNICAL TALKS SECTION ==================== -->
+    <section id="technical-talks" class="scroll-mt-24 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Conference Presentation</h2>
+        <span id="section-badge-talks" class="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold">1</span>
+      </div>
+      <div id="technical-talks-container" class="space-y-4">
+        <!-- Populated dynamically from PORTFOLIO_DATA.technicalTalks -->
+      </div>
+    </section>
+
+    <!-- ==================== ACHIEVEMENTS SECTION ==================== -->
+
+    <!-- CONTACT -->
+    <section id="contact" class="scroll-mt-24 space-y-5">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Contact</h2>
+        <p class="mt-2 text-sm text-[#52525B]">For academic networking, research collaboration, and postgraduate study enquiries.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="mailto:sh2024979@gmail.com" class="academic-card rounded-2xl p-5 flex items-center gap-3 hover:border-[#2563EB] transition-colors">
+          <span class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center text-lg" aria-hidden="true">✉</span>
+          <span><span class="block text-xs text-[#71717A] font-semibold uppercase tracking-wide">Email</span><span class="block mt-1 text-sm font-semibold text-[#171717] break-all">sh2024979@gmail.com</span></span>
+        </a>
+        <a href="https://www.linkedin.com/in/sohel-matubber" target="_blank" rel="noopener noreferrer" class="academic-card rounded-2xl p-5 flex items-center gap-3 hover:border-[#2563EB] transition-colors">
+          <span class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center text-lg font-bold" aria-hidden="true">in</span>
+          <span><span class="block text-xs text-[#71717A] font-semibold uppercase tracking-wide">LinkedIn</span><span class="block mt-1 text-sm font-semibold text-[#171717]">Sohel Matubber</span></span>
+        </a>
+      </div>
+    </section>
+
+    </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="mt-16 bg-white border-t border-[#E5E7EB]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#52525B]">
+      <div>
+        <span class="font-display font-bold text-[#171717]">Sohel Matubber</span>
+        <span class="mx-2 text-[#E5E7EB]">&bull;</span>
+        <span>B.Sc. Electrical and Electronic Engineering · Jamalpur Science & Technology University</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#home" class="hover:text-[#2563EB] transition-colors">Home</a>
+        <a href="#research" class="hover:text-[#2563EB] transition-colors">Research</a>
+        <a href="#technical-talks" class="hover:text-[#2563EB] transition-colors">Conference</a>
+        <a href="#contact" class="hover:text-[#2563EB] transition-colors">Contact</a>
+        <button type="button" onclick="openCVModal()" class="hover:text-[#2563EB] transition-colors font-medium">
+          Academic CV
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FULL RESEARCH SUMMARY MODAL ==================== -->
+  <div
+    id="research-detail-modal"
+    class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-xs p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="research-modal-title"
+  >
+    <div class="max-w-3xl mx-auto my-6 bg-white rounded-2xl border border-[#E5E7EB] shadow-xl overflow-hidden">
+      <div class="px-6 py-4 bg-[#F8F9FA] border-b border-[#E5E7EB] flex items-start justify-between gap-4">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold mb-1.5">
+            SCAPS-1D Numerical Simulation Summary
+          </span>
+          <h3 id="research-modal-title" class="font-display font-bold text-lg sm:text-xl text-[#171717] leading-snug">
+            Research Summary
+          </h3>
+        </div>
+        <button
+          type="button"
+          onclick="closeResearchModal()"
+          aria-label="Close Research Summary"
+          class="p-2 rounded-xl text-[#52525B] hover:text-[#171717] hover:bg-[#E5E7EB]/60 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="research-modal-body" class="p-6 sm:p-8 space-y-5 text-sm text-[#52525B] leading-relaxed">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ACADEMIC CV PREVIEW MODAL ==================== -->
+  <div
+    id="cv-modal"
+    class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/55 backdrop-blur-xs p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cv-modal-heading"
+  >
+    <div class="max-w-4xl mx-auto my-4">
+      <!-- Modal Action Header -->
+      <div class="bg-[#171717] text-white px-5 py-3.5 rounded-t-2xl flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <span id="cv-modal-heading" class="font-display font-bold text-sm sm:text-base">
+            Academic Curriculum Vitae (A4 Print Format)
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onclick="triggerPrintCV()"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span>Print / Save as PDF</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="closeCVModal()"
+            aria-label="Close Academic CV Preview"
+            class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Visual A4 Preview Container -->
+      <div id="cv-modal-preview-body" class="bg-white p-6 sm:p-10 rounded-b-2xl border border-[#E5E7EB] shadow-xl text-[#171717]">
+        <!-- Populated dynamically from PORTFOLIO_DATA -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DEDICATED PRINT-ONLY A4 CV SHEET ==================== -->
+  <!-- Hidden on screen; becomes the sole visible root element during @media print -->
+  <div id="printable-cv-sheet" class="hidden" aria-hidden="true"></div>
+
+  <!-- ==================== CENTRALIZED CONFIGURATION & RENDER ENGINE ==================== -->
+  <script>
+    /**
+     * ============================================================================
+     * CENTRALIZED PORTFOLIO CONFIGURATION (PORTFOLIO_DATA)
+     * ============================================================================
+     * Update personal details, links, images, and verified academic entries below.
+     * Rules:
+     * - Leave optional fields (university, email, linkedin, github, orcid, cvPdfUrl)
+     *   as "" when not yet available; their UI links/lines will be omitted cleanly.
+     * - Leave array sections empty ([]) until you have verified entries to add.
+     * - Navigation count badges update automatically from array lengths.
+     * ============================================================================
+     */
+    const PORTFOLIO_DATA = {
+      fullName: "Sohel Matubber",
+      brandName: "S. MATUBBER",
+      subtitle: "B.Sc. EEE Student | Solar Photovoltaic Device Modelling | Renewable Energy Research",
+      degree: "BSc in Electrical and Electronic Engineering (EEE)",
+      academicStatus: "4th Year, 1st Semester",
+      expectedGraduation: "2027",
+      location: "Bangladesh",
+      university: "Jamalpur Science & Technology University",
+      email: "sh2024979@gmail.com",
+      linkedin: "https://www.linkedin.com/in/sohel-matubber",
+      github: "",     // Optional: e.g., "https://github.com/..." (omitted cleanly when empty)
+      orcid: "",      // Optional: e.g., "https://orcid.org/0000-..." (omitted cleanly when empty)
+      profilePhoto: "assets/profile.jpg",
+      cvDocUrl: "documents/Sohel_Matubber_Academic_CV.docx",
+      biography: "I am an undergraduate student in Electrical and Electronic Engineering at Jamalpur Science and Technology University, Bangladesh. My research focuses on numerical modelling and multi-parameter optimisation of lead-free double-absorber solar-cell devices using SCAPS-1D. I presented this research at an international IEEE conference in Cox’s Bazar, Bangladesh, in 2026. I am interested in solar photovoltaics, renewable energy systems, and AI-assisted computer-vision methods for PV inspection and condition monitoring. I also contribute to student leadership through IEEE and university robotics activities.",
+
+      researchInterests: [
+        "Solar Photovoltaic Technology",
+        "Lead-Free Double-Absorber Solar Cells",
+        "Semiconductor Device Simulation (SCAPS-1D)",
+        "Renewable Energy Systems",
+        "Sustainable Power Technologies",
+        "Photovoltaic Device Optimization"
+      ],
+
+      skills: [
+        {
+          category: "Solar Cell Simulation",
+          items: [
+            "SCAPS-1D",
+            "Photovoltaic Device Modeling",
+            "Double-Absorber Solar Cell Architecture",
+            "Energy Band Alignment & Defect Engineering",
+            "Doping & Thickness Optimization"
+          ]
+        },
+        {
+          category: "Data Analysis & Visualization",
+          items: [
+            "OriginPro",
+            "Photovoltaic Performance Analysis"
+          ]
+        },
+        {
+          category: "Engineering & Research",
+          items: [
+            "Electrical and Electronic Engineering Fundamentals",
+            "Semiconductor Device Physics",
+            "Renewable Energy & Photovoltaic Systems",
+            "Scientific Research & Technical Writing"
+          ]
+        }
+      ],
+
+      research: [
+        {
+          title: "SCAPS-1D Modelling and Multi-Parameter Optimisation of a Lead-Free Double-Absorber Solar Cell",
+          status: "Presented",
+          venue: "International IEEE Conference, Cox’s Bazar, Bangladesh (2026)",
+          software: "SCAPS-1D",
+          architecture: "FTO / SnS₂ / CuAgBeSnSe₄ / MASnI₃ / Zn₃P₂ / Au",
+          resultsDisclaimer: "SCAPS-1D Numerical Simulation Results — Not Experimental Measurements",
+          metrics: [
+            { label: "Open-Circuit Voltage", symbol: "Voc", value: "1.136 V" },
+            { label: "Short-Circuit Current Density", symbol: "Jsc", value: "34.83 mA/cm²" },
+            { label: "Fill Factor", symbol: "FF", value: "82.24%" },
+            { label: "Power Conversion Efficiency", symbol: "PCE", value: "32.53%" }
+          ],
+          summary: "One-dimensional numerical device modeling and parametric optimization of an environmentally benign, lead-free double-absorber thin-film solar cell architecture (FTO / SnS₂ / CuAgBeSnSe₄ / MASnI₃ / Zn₃P₂ / Au) simulated under standard AM 1.5G illumination using SCAPS-1D.",
+          methodology: "Coupled Poisson and continuity equations for electrons and holes were solved numerically in SCAPS-1D across the six-layer planar heterostructure. Complementary dual absorber layers (CuAgBeSnSe₄ and MASnI₃) were paired with an SnS₂ electron transport layer and a Zn₃P₂ hole transport layer to broaden optical absorption and enhance photogenerated carrier separation.",
+          layers: [
+            {
+              id: "fto",
+              step: 1,
+              formulaHtml: "FTO",
+              plainFormula: "FTO",
+              materialName: "Fluorine-Doped Tin Oxide",
+              role: "Front TCO Contact",
+              accentClass: "bg-sky-50 border-sky-200 text-sky-950",
+              badgeClass: "bg-sky-100 text-sky-800",
+              description: "Serves as the transparent conductive oxide (TCO) front window electrode, transmitting incident solar illumination into the active absorber stack while collecting photogenerated electrons toward the external circuit."
+            },
+            {
+              id: "sns2",
+              step: 2,
+              formulaHtml: "SnS<sub>2</sub>",
+              plainFormula: "SnS₂",
+              materialName: "Tin Disulfide",
+              role: "Electron Transport Layer",
+              accentClass: "bg-blue-50 border-blue-200 text-blue-950",
+              badgeClass: "bg-blue-100 text-blue-800",
+              description: "Functions as the n-type electron transport layer (ETL), facilitating selective electron extraction from the absorber region toward the FTO front contact while blocking photogenerated holes to reduce interfacial recombination."
+            },
+            {
+              id: "cuagbesnse4",
+              step: 3,
+              formulaHtml: "CuAgBeSnSe<sub>4</sub>",
+              plainFormula: "CuAgBeSnSe₄",
+              materialName: "Copper–Silver–Beryllium–Tin Selenide Absorber",
+              role: "Primary Lead-Free Absorber",
+              accentClass: "bg-emerald-50 border-emerald-200 text-emerald-950",
+              badgeClass: "bg-emerald-100 text-emerald-800",
+              description: "Acts as the primary non-toxic, lead-free absorber layer in the double-absorber heterostructure, harvesting incident photons to generate electron-hole pairs and establishing the upper heterojunction interface with SnS₂."
+            },
+            {
+              id: "masni3",
+              step: 4,
+              formulaHtml: "MASnI<sub>3</sub>",
+              plainFormula: "MASnI₃",
+              materialName: "Methylammonium Tin Iodide",
+              role: "Secondary Lead-Free Perovskite Absorber",
+              accentClass: "bg-teal-50 border-teal-200 text-teal-950",
+              badgeClass: "bg-teal-100 text-teal-800",
+              description: "Complements CuAgBeSnSe₄ as the secondary lead-free tin-based perovskite absorber layer, extending photon absorption across the solar spectrum and supporting graded charge carrier transport in the double-absorber configuration."
+            },
+            {
+              id: "zn3p2",
+              step: 5,
+              formulaHtml: "Zn<sub>3</sub>P<sub>2</sub>",
+              plainFormula: "Zn₃P₂",
+              materialName: "Zinc Phosphide",
+              role: "Hole Transport Layer",
+              accentClass: "bg-indigo-50 border-indigo-200 text-indigo-950",
+              badgeClass: "bg-indigo-100 text-indigo-800",
+              description: "Operates as the p-type hole transport layer (HTL), selectively extracting photogenerated holes from MASnI₃ toward the rear electrode while suppressing minority electron recombination at the back interface."
+            },
+            {
+              id: "au",
+              step: 6,
+              formulaHtml: "Au",
+              plainFormula: "Au",
+              materialName: "Gold",
+              role: "Back Metal Contact",
+              accentClass: "bg-amber-50 border-amber-200 text-amber-950",
+              badgeClass: "bg-amber-100 text-amber-800",
+              description: "Provides the rear metallic contact electrode for efficient hole collection into the external electrical circuit, completing the planar six-layer solar cell architecture."
+            }
+          ]
+        }
+      ],
+
+      technicalTalks: [
+        {
+          title: "SCAPS-1D Modelling and Multi-Parameter Optimisation of a Lead-Free Double-Absorber Solar Cell",
+          event: "International IEEE Conference, Cox’s Bazar, Bangladesh (2026)",
+          category: "Research Presentation",
+          status: "Presented",
+          note: "Presented research on SCAPS-1D modelling and optimisation of a lead-free double-absorber solar-cell device. This entry records a conference presentation, not a confirmed publication."
+        }
+      ],
+
+      projects: [],
+      experiences: [
+        {
+          title: "Treasurer — IEEE JSTU Student Branch",
+          subtitle: "Jamalpur Science & Technology University",
+          date: "May 2026 – May 2027",
+          description: "Student-branch leadership role, supported by the uploaded IEEE Volunteer Certificate."
+        },
+        {
+          title: "Operations Secretary — JSTU Robotics Club",
+          subtitle: "Jamalpur Science & Technology University",
+          date: "",
+          description: "Student leadership and robotics-club operations."
+        }
+      ],
+      training: [],
+      certificates: [
+        { title: "IEEE Membership Certificate", subtitle: "IEEE Student Member in good standing", date: "2027", description: "Certificate recognising student membership and commitment to the advancement of technology.", url: "documents/IEEE_Membership_2027.pdf" },
+        { title: "IEEE Computer Society Membership", subtitle: "IEEE Computer Society", date: "2027", description: "Certificate recognising Sohel Matubber as a Student Member in good standing.", url: "documents/IEEE_Computer_Society_Membership_2027.pdf" },
+        { title: "IEEE Women in Engineering Membership", subtitle: "IEEE Women in Engineering", date: "2027", description: "Certificate recognising student membership in good standing.", url: "documents/IEEE_Women_in_Engineering_Membership_2027.pdf" },
+        { title: "IEEE Volunteer Certificate", subtitle: "Treasurer — Jamalpur Science & Technology University", date: "May 2026 – May 2027", description: "Recognition of volunteer service to the IEEE mission and its members.", url: "documents/IEEE_Volunteer_Treasurer_2026-2027.pdf" }
+      ],
+      achievements: []
+    };
+
+    // Active selected layer in the 6-layer interactive solar cell explorer
+    let activeSolarLayerId = "cuagbesnse4";
+
+    /**
+     * ESCAPE HTML UTILITY (Prevents XSS when rendering dynamic config strings)
+     */
+    function escapeHtml(value) {
+      if (value === null || value === undefined) return "";
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    /**
+     * SAFE AVATAR FALLBACK HANDLER (Eliminates broken image icons if assets/profile.jpg is missing)
+     */
+    function handleAvatarError(imgEl, fallbackId) {
+      if (!imgEl) return;
+      imgEl.onerror = null;
+      imgEl.removeAttribute("src");
+      imgEl.classList.add("hidden");
+      const fallbackEl = document.getElementById(fallbackId);
+      if (fallbackEl) {
+        fallbackEl.classList.remove("hidden");
+      }
+    }
+
+    /**
+     * INITIALIZE AVATARS & HERO IDENTITY
+     */
+    function renderHeroSection() {
+      const d = PORTFOLIO_DATA;
+      document.getElementById("nav-brand-name").textContent = d.brandName;
+      document.getElementById("hero-full-name").textContent = d.fullName;
+      document.getElementById("hero-subtitle").textContent = d.subtitle;
+      document.getElementById("hero-biography").textContent = d.biography;
+
+      // Configure avatar images cleanly
+      const navImg = document.getElementById("nav-avatar-img");
+      const heroImg = document.getElementById("hero-avatar-img");
+      if (d.profilePhoto && d.profilePhoto.trim() !== "") {
+        navImg.src = d.profilePhoto;
+        heroImg.src = d.profilePhoto;
+      } else {
+        handleAvatarError(navImg, "nav-avatar-fallback");
+        handleAvatarError(heroImg, "hero-avatar-fallback");
+      }
+
+      // Build Academic Metadata Cards (omit university card cleanly when empty)
+      const metaItems = [
+        { label: "Degree Program", value: d.degree },
+        { label: "Academic Status", value: d.academicStatus },
+        { label: "Expected Graduation", value: d.expectedGraduation },
+        { label: "Location", value: d.location }
+      ];
+      if (d.university && d.university.trim() !== "") {
+        metaItems.splice(1, 0, { label: "University", value: d.university.trim() });
+      }
+
+      const metaGrid = document.getElementById("hero-meta-grid");
+      metaGrid.innerHTML = metaItems.map((item) => `
+        <div class="rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] px-3.5 py-2.5">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-[#52525B]">${escapeHtml(item.label)}</div>
+          <div class="mt-0.5 text-xs sm:text-sm font-semibold text-[#171717]">${escapeHtml(item.value)}</div>
+        </div>
+      `).join("");
+
+      // Conditional Contact / Academic Profile Buttons (only rendered when configured)
+      const optionalLinks = [];
+      if (d.email && d.email.trim() !== "") {
+        optionalLinks.push({ label: "Email", href: `mailto:${d.email.trim()}`, external: false });
+      }
+      if (d.phone && d.phone.trim() !== "") {
+        optionalLinks.push({ label: "Phone", href: `tel:${d.phone.trim()}`, external: false });
+      }
+      if (d.linkedin && d.linkedin.trim() !== "") {
+        optionalLinks.push({ label: "LinkedIn", href: d.linkedin.trim(), external: true });
+      }
+      if (d.github && d.github.trim() !== "") {
+        optionalLinks.push({ label: "GitHub", href: d.github.trim(), external: true });
+      }
+      if (d.orcid && d.orcid.trim() !== "") {
+        optionalLinks.push({ label: "ORCID", href: d.orcid.trim(), external: true });
+      }
+      if (d.cvDocUrl && d.cvDocUrl.trim() !== "") {
+        optionalLinks.push({ label: "Download CV (DOCX)", href: d.cvDocUrl.trim(), external: false, download: true });
+      }
+
+      const optionalContainer = document.getElementById("hero-optional-links");
+      optionalContainer.innerHTML = ""; // Contact actions are already displayed in the reference-style hero.
+    }
+
+    /**
+     * DYNAMIC NAVIGATION & SECTION COUNT BADGES
+     * Shows count badge ONLY when count >= 1; hides badge completely when count === 0.
+     */
+    function renderNavigation() {
+      const allNavItems = [
+        { label: "Home", href: "#home", count: null },
+        { label: "Research", href: "#research", count: PORTFOLIO_DATA.research.length, badgeId: "section-badge-research" },
+        { label: "Skills", href: "#competencies", count: null },
+        { label: "Experience", href: "#experiences", count: PORTFOLIO_DATA.experiences.length, badgeId: "section-badge-experiences" },
+        { label: "Certificates", href: "#certificates", count: PORTFOLIO_DATA.certificates.length, badgeId: "section-badge-certificates" },
+        { label: "Conference", href: "#technical-talks", count: PORTFOLIO_DATA.technicalTalks.length, badgeId: "section-badge-talks" },
+        { label: "Contact", href: "#contact", count: null }
+      ];
+      const navItems = allNavItems.filter((item) => item.count === null || item.count > 0);
+
+      // Sync section heading badges
+      navItems.forEach((item) => {
+        if (!item.badgeId) return;
+        const badgeEl = document.getElementById(item.badgeId);
+        if (!badgeEl) return;
+        if (typeof item.count === "number" && item.count >= 1) {
+          badgeEl.textContent = String(item.count);
+          badgeEl.classList.remove("hidden");
+          badgeEl.classList.add("inline-flex");
+        } else {
+          badgeEl.textContent = "";
+          badgeEl.classList.add("hidden");
+          badgeEl.classList.remove("inline-flex");
+        }
+      });
+
+      // Desktop Horizontal Links
+      const desktopNav = document.getElementById("desktop-nav-links");
+      desktopNav.innerHTML = navItems.map((item) => {
+        const showBadge = typeof item.count === "number" && item.count >= 1;
+        return `
+          <a
+            href="${item.href}"
+            class="inline-flex items-center gap-1.5 px-2 xl:px-2.5 py-2 rounded-lg text-[13px] xl:text-sm font-medium text-[#52525B] hover:text-[#171717] hover:bg-[#F8F9FA] transition-colors whitespace-nowrap"
+          >
+            <span>${escapeHtml(item.label)}</span>
+            ${showBadge ? `<span class="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#2563EB] text-white text-[11px] font-semibold leading-none">${item.count}</span>` : ""}
+          </a>
+        `;
+      }).join("");
+
+      // Mobile / Tablet Drawer Links
+      const mobileNav = document.getElementById("mobile-nav-links");
+      mobileNav.innerHTML = navItems.map((item) => {
+        const showBadge = typeof item.count === "number" && item.count >= 1;
+        return `
+          <a
+            href="${item.href}"
+            onclick="closeMobileDrawer()"
+            class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#171717] hover:bg-[#F8F9FA] transition-colors"
+          >
+            <span>${escapeHtml(item.label)}</span>
+            ${showBadge ? `<span class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full bg-[#2563EB] text-white text-xs font-semibold">${item.count}</span>` : ""}
+          </a>
+        `;
+      }).join("");
+    }
+
+    /**
+     * RENDER RESEARCH SECTION & INTERACTIVE 6-LAYER SOLAR CELL EXPLORER
+     */
+    function renderResearchSection() {
+      const container = document.getElementById("featured-research-card");
+      const study = PORTFOLIO_DATA.research[0];
+      if (!study) {
+        container.innerHTML = renderEmptyStateCard();
+        return;
+      }
+
+      const selectedLayer = study.layers.find((l) => l.id === activeSolarLayerId) || study.layers[0];
+
+      container.innerHTML = `
+        <!-- Top Metadata & Title -->
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
+              <span>Status: ${escapeHtml(study.status)}</span>
+            </span>
+            <span class="px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] text-xs font-mono font-semibold">
+              Software: ${escapeHtml(study.software)}
+            </span>
+            <span class="text-xs sm:text-sm font-medium text-[#52525B]">
+              ${escapeHtml(study.venue)}
+            </span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-[#171717] leading-snug">
+            ${escapeHtml(study.title)}
+          </h3>
+
+          <p class="text-sm sm:text-[15px] text-[#52525B] leading-relaxed">
+            ${escapeHtml(study.summary)}
+          </p>
+
+          <!-- Device Architecture Pill -->
+          <div class="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Device Architecture</span>
+            <code class="font-mono text-xs sm:text-sm font-semibold text-[#171717]">
+              FTO / SnS<sub>2</sub> / CuAgBeSnSe₄ / MASnI<sub>3</sub> / Zn<sub>3</sub>P<sub>2</sub> / Au
+            </code>
+          </div>
+        </div>
+
+        <!-- 4 Verified SCAPS-1D Numerical Simulation Metric Cards -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">
+              Reported Photovoltaic Performance Parameters
+            </span>
+            <span class="text-xs font-mono text-[#059669] font-medium">
+              SCAPS-1D Numerical Simulation
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            ${study.metrics.map((m, idx) => `
+              <div class="rounded-xl p-4 ${idx === 3 ? "bg-[#ECFDF5]/60 border border-[#059669]/35" : "bg-[#F8F9FA] border border-[#E5E7EB]"}">
+                <div class="flex items-center justify-between text-xs text-[#52525B]">
+                  <span class="font-medium">${escapeHtml(m.label)}</span>
+                  <span class="font-mono font-semibold text-[#171717]">${escapeHtml(m.symbol)}</span>
+                </div>
+                <div class="mt-2 font-mono text-2xl font-bold ${idx === 3 ? "text-[#059669]" : "text-[#171717]"}">
+                  ${escapeHtml(m.value)}
+                </div>
+                <div class="mt-1.5 text-[11px] font-mono text-[#52525B]">
+                  SCAPS-1D Simulation
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- Interactive 6-Layer Solar Cell Architecture Explorer -->
+        <div class="pt-6 border-t border-[#E5E7EB]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+            <div>
+              <h4 class="font-display font-bold text-base sm:text-lg text-[#171717]">
+                Interactive 6-Layer Solar Cell Architecture Explorer
+              </h4>
+              <p class="text-xs sm:text-sm text-[#52525B]">
+                Select any functional layer below to inspect its structural role in the double-absorber heterostructure.
+              </p>
+            </div>
+            <span class="text-xs font-mono text-[#2563EB] bg-[#EFF6FF] border border-[#DBEAFE] px-3 py-1 rounded-lg self-start sm:self-auto">
+              Click layer to inspect
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Left: 6-Layer Stack -->
+            <div class="lg:col-span-6 rounded-2xl bg-[#F8F9FA] border border-[#E5E7EB] p-4 sm:p-5">
+              <div class="flex flex-col items-center pb-3.5 mb-3.5 border-b border-dashed border-amber-300">
+                <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                  Incident AM 1.5G Illumination (Through FTO)
+                </span>
+                <div class="flex items-center gap-5 mt-2 text-amber-500 photon-indicator" aria-hidden="true">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                </div>
+              </div>
+
+              <div class="space-y-2" role="listbox" aria-label="6-Layer Solar Cell Stack">
+                ${study.layers.map((layer) => {
+                  const isActive = layer.id === selectedLayer.id;
+                  return `
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected="${isActive}"
+                      onclick="selectSolarLayer('${layer.id}')"
+                      class="solar-layer-btn w-full text-left px-3.5 py-3 rounded-xl border ${layer.accentClass} ${isActive ? "is-active ring-2 ring-[#2563EB]" : "opacity-95 hover:opacity-100"} flex items-center justify-between gap-2.5"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="w-6 h-6 rounded-lg bg-white/90 text-[#171717] font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                          ${layer.step}
+                        </span>
+                        <div class="min-w-0">
+                          <div class="font-mono font-bold text-sm leading-tight">${layer.formulaHtml}</div>
+                          <div class="text-xs opacity-80 truncate mt-0.5">${escapeHtml(layer.materialName)}</div>
+                        </div>
+                      </div>
+                      <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold shrink-0 ${layer.badgeClass}">
+                        ${escapeHtml(layer.role)}
+                      </span>
+                    </button>
+                  `;
+                }).join("")}
+              </div>
+            </div>
+
+            <!-- Right: Active Layer Structural Inspector -->
+            <div class="lg:col-span-6 rounded-2xl bg-white border border-[#E5E7EB] p-5 sm:p-6 space-y-4">
+              <div class="pb-3.5 border-b border-[#E5E7EB]">
+                <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#2563EB]">
+                  Layer ${selectedLayer.step} of 6 &bull; Structural Inspector
+                </span>
+                <h5 class="mt-1.5 font-display font-bold text-lg sm:text-xl text-[#171717] flex flex-wrap items-center gap-2">
+                  <span class="font-mono px-2.5 py-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] text-base">
+                    ${selectedLayer.formulaHtml}
+                  </span>
+                  <span>${escapeHtml(selectedLayer.materialName)}</span>
+                </h5>
+              </div>
+
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Functional Role</div>
+                <div class="mt-1 text-sm font-semibold text-[#171717]">${escapeHtml(selectedLayer.role)}</div>
+              </div>
+
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Function in Double-Absorber Heterostructure</div>
+                <p class="mt-1 text-sm text-[#52525B] leading-relaxed">
+                  ${escapeHtml(selectedLayer.description)}
+                </p>
+              </div>
+
+              <div class="pt-3 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
+                <span class="text-xs text-[#52525B]">Modeled in SCAPS-1D under AM 1.5G</span>
+                <button
+                  type="button"
+                  onclick="openResearchModal(0)"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-semibold transition-colors"
+                >
+                  <span>View Full Research Summary</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function selectSolarLayer(layerId) {
+      activeSolarLayerId = layerId;
+      renderResearchSection();
+    }
+
+    /**
+     * FULL RESEARCH SUMMARY MODAL
+     */
+    function openResearchModal(index) {
+      const study = PORTFOLIO_DATA.research[index];
+      if (!study) return;
+
+      document.getElementById("research-modal-title").textContent = study.title;
+      const body = document.getElementById("research-modal-body");
+
+      body.innerHTML = `
+        <div class="p-4 rounded-xl bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold">
+          ${escapeHtml(study.resultsDisclaimer)}
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB]">
+            <div class="font-semibold text-[#52525B] uppercase tracking-wider text-[11px]">Conference Record</div>
+            <div class="mt-1 font-semibold text-[#171717]">${escapeHtml(study.venue)}</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB]">
+            <div class="font-semibold text-[#52525B] uppercase tracking-wider text-[11px]">Simulation Platform</div>
+            <div class="mt-1 font-mono font-semibold text-[#171717]">${escapeHtml(study.software)} &bull; Status: ${escapeHtml(study.status)}</div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-[#171717] text-base mb-1.5">Research Overview</h4>
+          <p>${escapeHtml(study.summary)}</p>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-[#171717] text-base mb-1.5">Numerical Modeling Methodology</h4>
+          <p>${escapeHtml(study.methodology)}</p>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-[#171717] text-base mb-2">Six-Layer Planar Device Stack</h4>
+          <div class="overflow-x-auto rounded-xl border border-[#E5E7EB]">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-[#F8F9FA] border-b border-[#E5E7EB] text-[#171717]">
+                  <th class="py-2.5 px-3">Layer</th>
+                  <th class="py-2.5 px-3">Material</th>
+                  <th class="py-2.5 px-3">Functional Role</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#E5E7EB]">
+                ${study.layers.map((l) => `
+                  <tr>
+                    <td class="py-2.5 px-3 font-mono font-semibold text-[#171717]">${l.formulaHtml}</td>
+                    <td class="py-2.5 px-3 text-[#171717]">${escapeHtml(l.materialName)}</td>
+                    <td class="py-2.5 px-3 text-[#52525B]">${escapeHtml(l.role)}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-[#171717] text-base mb-2">Reported SCAPS-1D Simulation Parameters</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            ${study.metrics.map((m) => `
+              <div class="p-3 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB]">
+                <div class="font-mono text-xs text-[#52525B]">${escapeHtml(m.symbol)}</div>
+                <div class="font-mono font-bold text-base text-[#171717] mt-0.5">${escapeHtml(m.value)}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+
+      document.getElementById("research-detail-modal").classList.remove("hidden");
+    }
+
+    function closeResearchModal() {
+      document.getElementById("research-detail-modal").classList.add("hidden");
+    }
+
+    /**
+     * RENDER COMPETENCIES & RESEARCH INTERESTS
+     */
+    function renderCompetenciesAndInterests() {
+      const skillsGrid = document.getElementById("skills-categories-grid");
+      skillsGrid.innerHTML = PORTFOLIO_DATA.skills.map((group) => `
+        <div class="rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] p-4">
+          <h3 class="font-display font-bold text-sm text-[#171717] pb-2.5 mb-3 border-b border-[#E5E7EB]">
+            ${escapeHtml(group.category)}
+          </h3>
+          <ul class="space-y-2 text-xs sm:text-[13px] text-[#52525B]">
+            ${group.items.map((skill) => `
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-1.5 shrink-0"></span>
+                <span>${escapeHtml(skill)}</span>
+              </li>
+            `).join("")}
+          </ul>
+        </div>
+      `).join("");
+
+      const interestsList = document.getElementById("research-interests-list");
+      interestsList.innerHTML = PORTFOLIO_DATA.researchInterests.map((interest) => `
+        <span class="px-3 py-1.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] text-xs sm:text-[13px] font-medium text-[#171717]">
+          ${escapeHtml(interest)}
+        </span>
+      `).join("");
+    }
+
+    /**
+     * CLEAN, DIGNIFIED EMPTY-STATE CARD FOR VERIFIED-ZERO SECTIONS
+     */
+    function renderEmptyStateCard() {
+      return `
+        <div class="academic-card rounded-2xl px-6 py-8 text-center">
+          <p class="text-sm font-medium text-[#52525B]">No verified entries added yet.</p>
+        </div>
+      `;
+    }
+
+    /**
+     * RENDER TECHNICAL TALKS & VERIFIED-EMPTY SECTIONS
+     */
+    function renderDynamicPortfolioSections() {
+      // Technical Talks (1 verified entry)
+      const talksContainer = document.getElementById("technical-talks-container");
+      if (!PORTFOLIO_DATA.technicalTalks.length) {
+        talksContainer.closest("section").classList.add("hidden");
+      } else {
+        talksContainer.closest("section").classList.remove("hidden");
+        talksContainer.innerHTML = PORTFOLIO_DATA.technicalTalks.map((talk) => `
+          <article class="academic-card rounded-2xl p-6 sm:p-7">
+            <div class="flex flex-wrap items-center gap-2.5 mb-2.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
+                <span>${escapeHtml(talk.status)}</span>
+              </span>
+              <span class="px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] text-xs font-semibold">
+                ${escapeHtml(talk.category)}
+              </span>
+            </div>
+            <h3 class="font-display font-bold text-lg sm:text-xl text-[#171717] leading-snug">
+              ${escapeHtml(talk.title)}
+            </h3>
+            <p class="mt-1.5 text-sm font-medium text-[#171717]">
+              ${escapeHtml(talk.event)}
+            </p>
+            <p class="mt-2.5 text-xs sm:text-sm text-[#52525B] leading-relaxed">
+              ${escapeHtml(talk.note)}
+            </p>
+          </article>
+        `).join("");
+      }
+
+      // Render empty-safe containers for Projects, Experiences, Training, Certificates, Achievements
+      const simpleSections = [
+        { id: "projects-container", items: PORTFOLIO_DATA.projects },
+        { id: "experiences-container", items: PORTFOLIO_DATA.experiences },
+        { id: "training-container", items: PORTFOLIO_DATA.training },
+        { id: "certificates-container", items: PORTFOLIO_DATA.certificates },
+        { id: "achievements-container", items: PORTFOLIO_DATA.achievements }
+      ];
+
+      simpleSections.forEach((sec) => {
+        const el = document.getElementById(sec.id);
+        if (!el) return;
+        if (!sec.items || sec.items.length === 0) {
+          el.closest("section").classList.add("hidden");
+          el.innerHTML = "";
+        } else {
+          el.closest("section").classList.remove("hidden");
+          el.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-5">` + sec.items.map((entry) => `
+            <article class="academic-card rounded-2xl p-6">
+              <h3 class="font-display font-bold text-base sm:text-lg text-[#171717]">${escapeHtml(entry.title || "")}</h3>
+              ${entry.subtitle ? `<p class="mt-1 text-xs sm:text-sm font-medium text-[#2563EB]">${escapeHtml(entry.subtitle)}</p>` : ""}
+              ${entry.date ? `<p class="mt-1 text-xs font-mono text-[#52525B]">${escapeHtml(entry.date)}</p>` : ""}
+              ${entry.description ? `<p class="mt-3 text-sm text-[#52525B] leading-relaxed">${escapeHtml(entry.description)}</p>` : ""}
+              ${entry.url ? `<a href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex mt-4 items-center gap-2 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8]">View certificate <span aria-hidden="true">↗</span></a>` : ""}
+            </article>
+          `).join("") + `</div>`;
+        }
+      });
+    }
+
+    /**
+     * ACADEMIC CV HTML BUILDER (Populates both Preview Modal and @media print A4 Sheet)
+     */
+    function buildAcademicCVMarkup() {
+      const d = PORTFOLIO_DATA;
+      const study = d.research[0];
+
+      const contactParts = [d.location];
+      if (d.phone && d.phone.trim() !== "") contactParts.push(`Phone: ${d.phone.trim()}`);
+      if (d.email && d.email.trim() !== "") contactParts.push(`Email: ${d.email.trim()}`);
+      if (d.linkedin && d.linkedin.trim() !== "") contactParts.push(`LinkedIn: ${d.linkedin.trim()}`);
+      if (d.github && d.github.trim() !== "") contactParts.push(`GitHub: ${d.github.trim()}`);
+      if (d.orcid && d.orcid.trim() !== "") contactParts.push(`ORCID: ${d.orcid.trim()}`);
+
+      return `
+        <div class="font-sans text-[#171717] space-y-5 text-[13px] leading-relaxed">
+          <!-- CV Header -->
+          <div class="cv-avoid-break border-b-2 border-[#171717] pb-4">
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight text-[#171717]">
+              ${escapeHtml(d.fullName)}
+            </h1>
+            <p class="mt-1 font-medium text-xs sm:text-sm text-[#52525B]">
+              ${escapeHtml(d.subtitle)}
+            </p>
+            <p class="mt-1.5 font-mono text-xs text-[#52525B]">
+              ${escapeHtml(contactParts.join("  |  "))}
+            </p>
+          </div>
+
+          <!-- Academic Profile -->
+          <div class="cv-avoid-break">
+            <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+              Academic Profile
+            </h2>
+            <p class="text-[#171717]">${escapeHtml(d.biography)}</p>
+          </div>
+
+          <!-- Education -->
+          <div class="cv-avoid-break">
+            <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+              Education
+            </h2>
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div class="font-bold text-[#171717]">${escapeHtml(d.degree)}</div>
+              <div class="font-mono text-xs text-[#52525B]">Expected Graduation: ${escapeHtml(d.expectedGraduation)}</div>
+            </div>
+            <div class="text-xs text-[#52525B] mt-0.5">
+              ${d.university && d.university.trim() !== "" ? `${escapeHtml(d.university.trim())} &bull; ` : ""}Academic Standing: ${escapeHtml(d.academicStatus)} &bull; ${escapeHtml(d.location)}
+            </div>
+          </div>
+
+          <!-- Research Experience & Numerical Simulation Results -->
+          ${study ? `
+            <div class="cv-avoid-break">
+              <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+                Research Experience &amp; Numerical Modeling
+              </h2>
+              <div class="font-bold text-[#171717]">${escapeHtml(study.title)}</div>
+              <div class="text-xs font-medium text-[#52525B] mt-0.5">
+                Simulation Platform: ${escapeHtml(study.software)} &bull; Status: ${escapeHtml(study.status)}
+              </div>
+              <p class="mt-1.5 text-[#171717]">${escapeHtml(study.summary)}</p>
+              <div class="mt-2 p-3 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] text-xs">
+                <div><strong>Device Architecture:</strong> <span class="font-mono">FTO / SnS₂ / CuAgBeSnSe₄ / MASnI₃ / Zn₃P₂ / Au</span></div>
+                <div class="mt-1"><strong>Reported SCAPS-1D Numerical Simulation Results (Not Experimental Measurements):</strong> Voc = 1.136 V, Jsc = 34.83 mA/cm², FF = 82.24%, PCE = 32.53%</div>
+              </div>
+            </div>
+          ` : ""}
+
+          <!-- Conference Presentation / Technical Talks -->
+          ${d.technicalTalks.length ? `
+            <div class="cv-avoid-break">
+              <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+                Conference Presentations
+              </h2>
+              ${d.technicalTalks.map((talk) => `
+                <div>
+                  <div class="font-bold text-[#171717]">${escapeHtml(talk.title)}</div>
+                  <div class="text-xs text-[#52525B] mt-0.5">${escapeHtml(talk.event)} &mdash; <strong>${escapeHtml(talk.status)}</strong></div>
+                  <div class="text-xs text-[#52525B] mt-0.5">${escapeHtml(talk.note)}</div>
+                </div>
+              `).join("")}
+            </div>
+          ` : ""}
+
+          <!-- Technical Skills -->
+          <div class="cv-avoid-break">
+            <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+              Technical Skills &amp; Competencies
+            </h2>
+            <div class="space-y-1.5 text-xs">
+              ${d.skills.map((group) => `
+                <div>
+                  <strong class="text-[#171717]">${escapeHtml(group.category)}:</strong>
+                  <span class="text-[#52525B]"> ${escapeHtml(group.items.join(", "))}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- Leadership and Engagement -->
+          <div class="cv-avoid-break">
+            <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+              Leadership &amp; Professional Engagement
+            </h2>
+            <ul class="list-disc pl-5 text-xs text-[#52525B] space-y-1">
+              <li><strong> Treasurer</strong>, IEEE JSTU Student Branch (May 2026 – May 2027).</li>
+              <li><strong>Operations Secretary</strong>, JSTU Robotics Club.</li>
+              <li>IEEE Student Member.</li>
+            </ul>
+          </div>
+
+          <!-- Research Interests -->
+          <div class="cv-avoid-break">
+            <h2 class="font-display font-bold text-xs uppercase tracking-wider text-[#2563EB] border-b border-[#E5E7EB] pb-1 mb-2">
+              Research Interests
+            </h2>
+            <p class="text-xs text-[#52525B]">${escapeHtml(d.researchInterests.join(" • "))}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function syncCVMarkup() {
+      const markup = buildAcademicCVMarkup();
+      document.getElementById("cv-modal-preview-body").innerHTML = markup;
+      document.getElementById("printable-cv-sheet").innerHTML = markup;
+
+    }
+
+    function openCVModal() {
+      syncCVMarkup();
+      document.getElementById("cv-modal").classList.remove("hidden");
+    }
+
+    function closeCVModal() {
+      document.getElementById("cv-modal").classList.add("hidden");
+    }
+
+    function triggerPrintCV() {
+      syncCVMarkup();
+      window.print();
+    }
+
+    /**
+     * MOBILE NAVIGATION DRAWER CONTROLS
+     */
+    function toggleMobileDrawer() {
+      const drawer = document.getElementById("mobile-nav-drawer");
+      const btn = document.getElementById("mobile-menu-toggle");
+      const iconOpen = document.getElementById("hamburger-icon-open");
+      const iconClose = document.getElementById("hamburger-icon-close");
+      const isHidden = drawer.classList.contains("hidden");
+
+      if (isHidden) {
+        drawer.classList.remove("hidden");
+        btn.setAttribute("aria-expanded", "true");
+        iconOpen.classList.add("hidden");
+        iconClose.classList.remove("hidden");
+      } else {
+        closeMobileDrawer();
+      }
+    }
+
+    function closeMobileDrawer() {
+      const drawer = document.getElementById("mobile-nav-drawer");
+      const btn = document.getElementById("mobile-menu-toggle");
+      const iconOpen = document.getElementById("hamburger-icon-open");
+      const iconClose = document.getElementById("hamburger-icon-close");
+
+      drawer.classList.add("hidden");
+      btn.setAttribute("aria-expanded", "false");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    }
+
+    /**
+     * KEYBOARD ACCESSIBILITY (Escape closes open modals & mobile drawer)
+     */
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeCVModal();
+        closeResearchModal();
+        closeMobileDrawer();
+      }
+    });
+
+    /**
+     * INITIALIZE APPLICATION ON DOM CONTENT LOADED
+     */
+    window.addEventListener("DOMContentLoaded", () => {
+      renderHeroSection();
+      renderNavigation();
+      renderResearchSection();
+      renderCompetenciesAndInterests();
+      renderDynamicPortfolioSections();
+      syncCVMarkup();
+    });
+  </script>
+</body>
+</html>
