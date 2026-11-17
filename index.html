@@ -181,7 +181,7 @@
     .reference-eyebrow { color:#2563eb; font-size:11px; font-weight:800; letter-spacing:.16em; margin-bottom:8px; }
     .reference-identity h1 {
       color:#191919; font-size:clamp(38px,5vw,64px); line-height:1.08;
-      letter-spacing:-.055em; font-weight:800; margin:0;
+      letter-spacing:-.025em; word-spacing:.04em; font-weight:800; margin:0;
     }
     .reference-identity > p {
       color:#45413d; font-size:18px; line-height:1.65; margin:12px 0 18px;
@@ -262,6 +262,37 @@
       }
     }
 
+
+    /* Research details are concealed until visitors choose to expand an entry. */
+    .research-disclosure {
+      border-top: 1px solid #E5E7EB;
+      background: #FFFFFF;
+    }
+    .research-disclosure-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      color: #1D4ED8;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background-color .18s ease, color .18s ease;
+    }
+    .research-disclosure-summary::-webkit-details-marker { display: none; }
+    .research-disclosure-summary::marker { content: ""; }
+    .research-disclosure-summary:hover { background: #F8FAFF; color: #1E40AF; }
+    .research-disclosure-summary:focus-visible {
+      outline: 3px solid rgba(37,99,235,.45);
+      outline-offset: -3px;
+      border-radius: 8px;
+    }
+    .research-disclosure-chevron { transition: transform .2s ease; flex: 0 0 auto; }
+    .research-disclosure[open] .research-disclosure-chevron { transform: rotate(180deg); }
+
   </style>
 </head>
 <body class="bg-[#F8F9FA] text-[#171717] selection:bg-blue-100 selection:text-blue-900">
@@ -275,7 +306,7 @@
           <div class="w-9 h-9 rounded-full overflow-hidden border border-[#E5E7EB] bg-[#171717] text-white flex items-center justify-center relative shrink-0">
             <img
               id="nav-avatar-img"
-              src=""
+              src="assets/profile.jpg"
               alt="Sohel Matubber"
               class="w-full h-full object-cover"
               onerror="handleAvatarError(this, 'nav-avatar-fallback')"
@@ -283,7 +314,7 @@
             <span id="nav-avatar-fallback" class="hidden font-display font-bold text-xs tracking-wider text-white">SM</span>
           </div>
           <span id="nav-brand-name" class="font-display font-bold text-sm sm:text-base tracking-tight text-[#171717] group-hover:text-[#2563EB] transition-colors">
-            S. MATUBBER
+            Sohel Matubber
           </span>
         </a>
 
@@ -377,16 +408,11 @@
         <div>
           <div class="flex items-center gap-2.5">
             <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Research</h2>
-            <span id="section-badge-research" class="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold">1</span>
+            <span id="section-badge-research" class="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold">2</span>
           </div>
           <p class="mt-1 text-sm text-[#52525B]">
-            Numerical device modeling and heterostructure optimization in thin-film photovoltaics.
+            Selected and ongoing research. Open an entry to explore its details.
           </p>
-        </div>
-
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-medium self-start sm:self-auto">
-          <span class="w-2 h-2 rounded-full bg-[#059669]"></span>
-          <span>SCAPS-1D Numerical Simulation Results &mdash; Not Experimental Measurements</span>
         </div>
       </div>
 
@@ -394,6 +420,23 @@
       <article id="featured-research-card" class="academic-card rounded-2xl p-6 sm:p-8 space-y-8">
         <!-- Populated dynamically from PORTFOLIO_DATA.research -->
       </article>
+
+      <!-- Additional double-absorber simulation research -->
+      <div id="additional-research-list" class="grid grid-cols-1 gap-4">
+        <!-- Populated dynamically from PORTFOLIO_DATA.additionalResearch -->
+      </div>
+    </section>
+
+    <!-- ==================== UNDERGRADUATE THESIS SECTION ==================== -->
+    <section id="thesis" class="scroll-mt-24 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Thesis</h2>
+        <span id="section-badge-thesis" class="hidden items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold"></span>
+      </div>
+      <p class="text-sm text-[#52525B] -mt-2">Proposed undergraduate thesis direction.</p>
+      <div id="thesis-container" class="grid grid-cols-1 gap-4">
+        <!-- Populated dynamically from PORTFOLIO_DATA.thesis -->
+      </div>
     </section>
 
     <!-- ==================== TECHNICAL COMPETENCIES & RESEARCH INTERESTS ==================== -->
@@ -434,6 +477,19 @@
     </section>
 
     <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="scroll-mt-24 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#171717] tracking-tight">Projects</h2>
+        <span id="section-badge-projects" class="hidden items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold"></span>
+      </div>
+      <p class="text-sm text-[#52525B] -mt-2">
+        Selected engineering, software, and research projects, including their methods, tools, and outcomes.
+      </p>
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Populated dynamically from PORTFOLIO_DATA.projects -->
+      </div>
+    </section>
+
     <!-- ==================== EXPERIENCES SECTION ==================== -->
     <section id="experiences" class="scroll-mt-24 space-y-5">
       <div class="flex items-center gap-2.5">
@@ -485,6 +541,10 @@
           <span class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center text-lg font-bold" aria-hidden="true">in</span>
           <span><span class="block text-xs text-[#71717A] font-semibold uppercase tracking-wide">LinkedIn</span><span class="block mt-1 text-sm font-semibold text-[#171717]">Sohel Matubber</span></span>
         </a>
+        <a href="tel:01851756766" class="academic-card rounded-2xl p-5 flex items-center gap-3 hover:border-[#2563EB] transition-colors">
+          <span class="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center text-lg" aria-hidden="true">☎</span>
+          <span><span class="block text-xs text-[#71717A] font-semibold uppercase tracking-wide">Phone</span><span class="block mt-1 text-sm font-semibold text-[#171717]">01851756766</span></span>
+        </a>
       </div>
     </section>
 
@@ -501,6 +561,8 @@
       <div class="flex flex-wrap items-center gap-4">
         <a href="#home" class="hover:text-[#2563EB] transition-colors">Home</a>
         <a href="#research" class="hover:text-[#2563EB] transition-colors">Research</a>
+        <a href="#thesis" class="hover:text-[#2563EB] transition-colors">Thesis</a>
+        <a href="#projects" class="hover:text-[#2563EB] transition-colors">Projects</a>
         <a href="#technical-talks" class="hover:text-[#2563EB] transition-colors">Conference</a>
         <a href="#contact" class="hover:text-[#2563EB] transition-colors">Contact</a>
         <button type="button" onclick="openCVModal()" class="hover:text-[#2563EB] transition-colors font-medium">
@@ -615,7 +677,7 @@
      */
     const PORTFOLIO_DATA = {
       fullName: "Sohel Matubber",
-      brandName: "S. MATUBBER",
+      brandName: "Sohel Matubber",
       subtitle: "B.Sc. EEE Student | Solar Photovoltaic Device Modelling | Renewable Energy Research",
       degree: "BSc in Electrical and Electronic Engineering (EEE)",
       academicStatus: "4th Year, 1st Semester",
@@ -628,7 +690,8 @@
       orcid: "",      // Optional: e.g., "https://orcid.org/0000-..." (omitted cleanly when empty)
       profilePhoto: "assets/profile.jpg",
       cvDocUrl: "documents/Sohel_Matubber_Academic_CV.docx",
-      biography: "I am an undergraduate student in Electrical and Electronic Engineering at Jamalpur Science and Technology University, Bangladesh. My research focuses on numerical modelling and multi-parameter optimisation of lead-free double-absorber solar-cell devices using SCAPS-1D. I presented this research at an international IEEE conference in Cox’s Bazar, Bangladesh, in 2026. I am interested in solar photovoltaics, renewable energy systems, and AI-assisted computer-vision methods for PV inspection and condition monitoring. I also contribute to student leadership through IEEE and university robotics activities.",
+      phone: "01851756766",
+      biography: "I am an undergraduate student in Electrical and Electronic Engineering at Jamalpur Science and Technology University, Bangladesh. My academic interests include solar photovoltaics, renewable energy systems, and computational methods for photovoltaic-device analysis. I have worked on numerical modelling and multi-parameter optimisation of lead-free double-absorber solar-cell structures using SCAPS-1D and presented one of my studies at the 12th IEEE International Conference on Sustainable Technology and Engineering (i-COSTE 2026) in Cox’s Bazar, Bangladesh. I also contribute to student leadership through IEEE and university robotics activities.",
 
       researchInterests: [
         "Solar Photovoltaic Technology",
@@ -636,7 +699,8 @@
         "Semiconductor Device Simulation (SCAPS-1D)",
         "Renewable Energy Systems",
         "Sustainable Power Technologies",
-        "Photovoltaic Device Optimization"
+        "Photovoltaic Device Optimization",
+        "Machine Learning for Solar-Cell Performance Prediction"
       ],
 
       skills: [
@@ -755,6 +819,30 @@
         }
       ],
 
+      // A separate double-absorber study: simulation is complete; manuscript writing remains.
+      additionalResearch: [
+        {
+          title: "Numerical Simulation of a Rb₂AgInBr₆/K₂CeCl₆ Double-Absorber Solar Cell",
+          simulationStatus: "Simulation Completed",
+          writingStatus: "Manuscript Writing Pending",
+          summary: "This research investigates a double-absorber solar-cell structure based on Rb₂AgInBr₆ and K₂CeCl₆. The numerical simulation stage has been completed, while the manuscript writing remains to be completed."
+        }
+      ],
+
+      // Proposed thesis direction; target performance is not a validated result.
+      thesis: [
+        {
+          title: "Machine Learning-Based Prediction of Solar Cell Performance Using Offline Data",
+          status: "Proposed Thesis Topic",
+          category: "Undergraduate Thesis",
+          summary: "The proposed thesis aims to investigate machine-learning-based prediction of solar-cell performance using an offline dataset rather than live or real-time data.",
+          dataSource: "Offline dataset — not live data",
+          performanceTarget: "85% target predictive performance",
+          targetNote: "This is a target, not a confirmed result. The evaluation metric and validation approach must be defined and verified during the research.",
+          objective: "Develop and evaluate a suitable predictive model, then assess whether the work can be developed into a research publication."
+        }
+      ],
+
       technicalTalks: [
         {
           title: "SCAPS-1D Modelling and Multi-Parameter Optimisation of a Lead-Free Double-Absorber Solar Cell",
@@ -765,7 +853,28 @@
         }
       ],
 
-      projects: [],
+      // Engineering projects. Technical specifications and tools can be added
+      // after confirming the actual implementation details.
+      projects: [
+        {
+          title: "Self-Driving Car",
+          subtitle: "Autonomous Vehicle Project",
+          category: "Robotics & Automation",
+          description: "An autonomous vehicle project focused on sensing the surrounding environment and making navigation decisions with minimal human intervention."
+        },
+        {
+          title: "Solar Air Cooler",
+          subtitle: "Solar-Powered Cooling Project",
+          category: "Renewable Energy",
+          description: "An air-cooling project designed to use solar energy as its power source, exploring an alternative to conventional grid-powered cooling."
+        },
+        {
+          title: "Fingerprint-Based Attendance System",
+          subtitle: "Biometric Identification Project",
+          category: "Embedded Systems",
+          description: "An attendance management system that uses fingerprint recognition to identify registered users and record their attendance."
+        }
+      ],
       experiences: [
         {
           title: "Treasurer — IEEE JSTU Student Branch",
@@ -782,6 +891,20 @@
       ],
       training: [],
       certificates: [
+        {
+          title: "Certificate of Participation",
+          description: "Certificate of participation. Open the PDF to view the full certificate details.",
+          url: "documents/Certificate%20of%20Perticipation.pdf",
+          linkLabel: "View PDF certificate"
+        },
+        {
+          title: "Certificate of Presentation — IEEE i-COSTE 2026",
+          subtitle: "SCAPS-1D Modeling and Multi-Parameter Optimization of a CABTSe/MASnI3 DoubleAbsorber Lead-Free Solar Cell",
+          date: "1–3 November 2026",
+          description: "Successfully presented at the 12th IEEE International Conference on Sustainable Technology and Engineering (i-COSTE 2026), held at Best Western Heritage, Cox’s Bazar, Bangladesh. Paper ID: IEEE_i-COSTE_2026_3625.",
+          url: "documents/IEEE%20presentation%20Certificate.pdf",
+          linkLabel: "View PDF certificate"
+        },
         { title: "IEEE Membership Certificate", subtitle: "IEEE Student Member in good standing", date: "2027", description: "Certificate recognising student membership and commitment to the advancement of technology.", url: "documents/IEEE_Membership_2027.pdf" },
         { title: "IEEE Computer Society Membership", subtitle: "IEEE Computer Society", date: "2027", description: "Certificate recognising Sohel Matubber as a Student Member in good standing.", url: "documents/IEEE_Computer_Society_Membership_2027.pdf" },
         { title: "IEEE Women in Engineering Membership", subtitle: "IEEE Women in Engineering", date: "2027", description: "Certificate recognising student membership in good standing.", url: "documents/IEEE_Women_in_Engineering_Membership_2027.pdf" },
@@ -890,16 +1013,21 @@
      * Shows count badge ONLY when count >= 1; hides badge completely when count === 0.
      */
     function renderNavigation() {
+      const researchCount = PORTFOLIO_DATA.research.length + (PORTFOLIO_DATA.additionalResearch || []).length;
+      const thesisCount = (PORTFOLIO_DATA.thesis || []).length;
       const allNavItems = [
         { label: "Home", href: "#home", count: null },
-        { label: "Research", href: "#research", count: PORTFOLIO_DATA.research.length, badgeId: "section-badge-research" },
+        { label: "Research", href: "#research", count: researchCount, badgeId: "section-badge-research" },
+        { label: "Thesis", href: "#thesis", count: thesisCount, badgeId: "section-badge-thesis" },
         { label: "Skills", href: "#competencies", count: null },
+        { label: "Projects", href: "#projects", count: PORTFOLIO_DATA.projects.length, badgeId: "section-badge-projects", alwaysVisible: true },
         { label: "Experience", href: "#experiences", count: PORTFOLIO_DATA.experiences.length, badgeId: "section-badge-experiences" },
         { label: "Certificates", href: "#certificates", count: PORTFOLIO_DATA.certificates.length, badgeId: "section-badge-certificates" },
         { label: "Conference", href: "#technical-talks", count: PORTFOLIO_DATA.technicalTalks.length, badgeId: "section-badge-talks" },
         { label: "Contact", href: "#contact", count: null }
       ];
-      const navItems = allNavItems.filter((item) => item.count === null || item.count > 0);
+      // Keep Projects discoverable even before the first project is added.
+      const navItems = allNavItems.filter((item) => item.alwaysVisible || item.count === null || item.count > 0);
 
       // Sync section heading badges
       navItems.forEach((item) => {
@@ -960,177 +1088,251 @@
         return;
       }
 
+      // Keep the details panel open when a user selects a different device layer.
+      const detailsWasOpen = !!container.querySelector("#featured-research-details")?.open;
       const selectedLayer = study.layers.find((l) => l.id === activeSolarLayerId) || study.layers[0];
 
       container.innerHTML = `
-        <!-- Top Metadata & Title -->
-        <div class="space-y-4">
-          <div class="flex flex-wrap items-center gap-2.5">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
-              <span>Status: ${escapeHtml(study.status)}</span>
-            </span>
-            <span class="px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] text-xs font-mono font-semibold">
-              Software: ${escapeHtml(study.software)}
-            </span>
-            <span class="text-xs sm:text-sm font-medium text-[#52525B]">
-              ${escapeHtml(study.venue)}
-            </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-display font-bold text-[#171717] leading-snug">
-            ${escapeHtml(study.title)}
-          </h3>
-
-          <p class="text-sm sm:text-[15px] text-[#52525B] leading-relaxed">
-            ${escapeHtml(study.summary)}
-          </p>
-
-          <!-- Device Architecture Pill -->
-          <div class="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Device Architecture</span>
-            <code class="font-mono text-xs sm:text-sm font-semibold text-[#171717]">
-              FTO / SnS<sub>2</sub> / CuAgBeSnSe₄ / MASnI<sub>3</sub> / Zn<sub>3</sub>P<sub>2</sub> / Au
-            </code>
-          </div>
-        </div>
-
-        <!-- 4 Verified SCAPS-1D Numerical Simulation Metric Cards -->
-        <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">
-              Reported Photovoltaic Performance Parameters
-            </span>
-            <span class="text-xs font-mono text-[#059669] font-medium">
-              SCAPS-1D Numerical Simulation
-            </span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            ${study.metrics.map((m, idx) => `
-              <div class="rounded-xl p-4 ${idx === 3 ? "bg-[#ECFDF5]/60 border border-[#059669]/35" : "bg-[#F8F9FA] border border-[#E5E7EB]"}">
-                <div class="flex items-center justify-between text-xs text-[#52525B]">
-                  <span class="font-medium">${escapeHtml(m.label)}</span>
-                  <span class="font-mono font-semibold text-[#171717]">${escapeHtml(m.symbol)}</span>
-                </div>
-                <div class="mt-2 font-mono text-2xl font-bold ${idx === 3 ? "text-[#059669]" : "text-[#171717]"}">
-                  ${escapeHtml(m.value)}
-                </div>
-                <div class="mt-1.5 text-[11px] font-mono text-[#52525B]">
-                  SCAPS-1D Simulation
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-
-        <!-- Interactive 6-Layer Solar Cell Architecture Explorer -->
-        <div class="pt-6 border-t border-[#E5E7EB]">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
-            <div>
-              <h4 class="font-display font-bold text-base sm:text-lg text-[#171717]">
-                Interactive 6-Layer Solar Cell Architecture Explorer
-              </h4>
-              <p class="text-xs sm:text-sm text-[#52525B]">
-                Select any functional layer below to inspect its structural role in the double-absorber heterostructure.
-              </p>
+        <article class="academic-card rounded-2xl overflow-hidden">
+          <!-- Compact research preview: details remain hidden until requested. -->
+          <div class="p-5 sm:p-6 space-y-3">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-xs font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
+                <span>Status: ${escapeHtml(study.status)}</span>
+              </span>
+              <span class="px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] text-xs font-mono font-semibold">
+                ${escapeHtml(study.software)}
+              </span>
+              <span class="text-xs sm:text-sm font-medium text-[#52525B]">${escapeHtml(study.venue)}</span>
             </div>
-            <span class="text-xs font-mono text-[#2563EB] bg-[#EFF6FF] border border-[#DBEAFE] px-3 py-1 rounded-lg self-start sm:self-auto">
-              Click layer to inspect
-            </span>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-[#171717] leading-snug">${escapeHtml(study.title)}</h3>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <!-- Left: 6-Layer Stack -->
-            <div class="lg:col-span-6 rounded-2xl bg-[#F8F9FA] border border-[#E5E7EB] p-4 sm:p-5">
-              <div class="flex flex-col items-center pb-3.5 mb-3.5 border-b border-dashed border-amber-300">
-                <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-                  Incident AM 1.5G Illumination (Through FTO)
-                </span>
-                <div class="flex items-center gap-5 mt-2 text-amber-500 photon-indicator" aria-hidden="true">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+          <details id="featured-research-details" class="research-disclosure" ${detailsWasOpen ? "open" : ""}>
+            <summary class="research-disclosure-summary">
+              <span>View research details</span>
+              <svg class="research-disclosure-chevron w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+
+            <div class="p-5 sm:p-8 border-t border-[#E5E7EB] space-y-8">
+              <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-[#ECFDF5] border border-[#D1FAE5] text-[#047857] text-xs font-semibold">
+                  ${escapeHtml(study.resultsDisclaimer)}
+                </div>
+                <div>
+                  <h4 class="font-display font-bold text-base text-[#171717] mb-1.5">Research Overview</h4>
+                  <p class="text-sm text-[#52525B] leading-relaxed">${escapeHtml(study.summary)}</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Device Architecture</span>
+                  <code class="font-mono text-xs sm:text-sm font-semibold text-[#171717]">${escapeHtml(study.architecture)}</code>
                 </div>
               </div>
 
-              <div class="space-y-2" role="listbox" aria-label="6-Layer Solar Cell Stack">
-                ${study.layers.map((layer) => {
-                  const isActive = layer.id === selectedLayer.id;
-                  return `
-                    <button
-                      type="button"
-                      role="option"
-                      aria-selected="${isActive}"
-                      onclick="selectSolarLayer('${layer.id}')"
-                      class="solar-layer-btn w-full text-left px-3.5 py-3 rounded-xl border ${layer.accentClass} ${isActive ? "is-active ring-2 ring-[#2563EB]" : "opacity-95 hover:opacity-100"} flex items-center justify-between gap-2.5"
-                    >
-                      <div class="flex items-center gap-3 min-w-0">
-                        <span class="w-6 h-6 rounded-lg bg-white/90 text-[#171717] font-mono text-xs font-bold flex items-center justify-center shrink-0">
-                          ${layer.step}
-                        </span>
-                        <div class="min-w-0">
-                          <div class="font-mono font-bold text-sm leading-tight">${layer.formulaHtml}</div>
-                          <div class="text-xs opacity-80 truncate mt-0.5">${escapeHtml(layer.materialName)}</div>
-                        </div>
+              <!-- Reported simulation parameters -->
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Reported Photovoltaic Performance Parameters</span>
+                  <span class="text-xs font-mono text-[#059669] font-medium">SCAPS-1D Numerical Simulation</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                  ${study.metrics.map((m, idx) => `
+                    <div class="rounded-xl p-4 ${idx === 3 ? "bg-[#ECFDF5]/60 border border-[#059669]/35" : "bg-[#F8F9FA] border border-[#E5E7EB]"}">
+                      <div class="flex items-center justify-between text-xs text-[#52525B]">
+                        <span class="font-medium">${escapeHtml(m.label)}</span>
+                        <span class="font-mono font-semibold text-[#171717]">${escapeHtml(m.symbol)}</span>
                       </div>
-                      <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold shrink-0 ${layer.badgeClass}">
-                        ${escapeHtml(layer.role)}
-                      </span>
-                    </button>
-                  `;
-                }).join("")}
+                      <div class="mt-2 font-mono text-2xl font-bold ${idx === 3 ? "text-[#059669]" : "text-[#171717]"}">${escapeHtml(m.value)}</div>
+                      <div class="mt-1.5 text-[11px] font-mono text-[#52525B]">SCAPS-1D Simulation</div>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+
+              <!-- Interactive solar-cell structure, available inside the details panel -->
+              <div class="pt-6 border-t border-[#E5E7EB]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+                  <div>
+                    <h4 class="font-display font-bold text-base sm:text-lg text-[#171717]">Interactive 6-Layer Solar Cell Architecture Explorer</h4>
+                    <p class="text-xs sm:text-sm text-[#52525B]">Select any functional layer to inspect its role in the double-absorber heterostructure.</p>
+                  </div>
+                  <span class="text-xs font-mono text-[#2563EB] bg-[#EFF6FF] border border-[#DBEAFE] px-3 py-1 rounded-lg self-start sm:self-auto">Click a layer to inspect</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <div class="lg:col-span-6 rounded-2xl bg-[#F8F9FA] border border-[#E5E7EB] p-4 sm:p-5">
+                    <div class="flex flex-col items-center pb-3.5 mb-3.5 border-b border-dashed border-amber-300">
+                      <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">Incident AM 1.5G Illumination (Through FTO)</span>
+                      <div class="flex items-center gap-5 mt-2 text-amber-500 photon-indicator" aria-hidden="true">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-4-4m4 4l4-4"/></svg>
+                      </div>
+                    </div>
+                    <div class="space-y-2" role="listbox" aria-label="6-Layer Solar Cell Stack">
+                      ${study.layers.map((layer) => {
+                        const isActive = layer.id === selectedLayer.id;
+                        return `
+                          <button type="button" role="option" aria-selected="${isActive}" onclick="selectSolarLayer('${layer.id}')"
+                            class="solar-layer-btn w-full text-left px-3.5 py-3 rounded-xl border ${layer.accentClass} ${isActive ? "is-active ring-2 ring-[#2563EB]" : "opacity-95 hover:opacity-100"} flex items-center justify-between gap-2.5">
+                            <div class="flex items-center gap-3 min-w-0">
+                              <span class="w-6 h-6 rounded-lg bg-white/90 text-[#171717] font-mono text-xs font-bold flex items-center justify-center shrink-0">${layer.step}</span>
+                              <div class="min-w-0">
+                                <div class="font-mono font-bold text-sm leading-tight">${layer.formulaHtml}</div>
+                                <div class="text-xs opacity-80 truncate mt-0.5">${escapeHtml(layer.materialName)}</div>
+                              </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold shrink-0 ${layer.badgeClass}">${escapeHtml(layer.role)}</span>
+                          </button>
+                        `;
+                      }).join("")}
+                    </div>
+                  </div>
+
+                  <div class="lg:col-span-6 rounded-2xl bg-white border border-[#E5E7EB] p-5 sm:p-6 space-y-4">
+                    <div class="pb-3.5 border-b border-[#E5E7EB]">
+                      <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#2563EB]">Layer ${selectedLayer.step} of 6 &bull; Structural Inspector</span>
+                      <h5 class="mt-1.5 font-display font-bold text-lg sm:text-xl text-[#171717] flex flex-wrap items-center gap-2">
+                        <span class="font-mono px-2.5 py-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] text-base">${selectedLayer.formulaHtml}</span>
+                        <span>${escapeHtml(selectedLayer.materialName)}</span>
+                      </h5>
+                    </div>
+                    <div>
+                      <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Functional Role</div>
+                      <div class="mt-1 text-sm font-semibold text-[#171717]">${escapeHtml(selectedLayer.role)}</div>
+                    </div>
+                    <div>
+                      <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Function in Double-Absorber Heterostructure</div>
+                      <p class="mt-1 text-sm text-[#52525B] leading-relaxed">${escapeHtml(selectedLayer.description)}</p>
+                    </div>
+                    <div class="pt-3 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
+                      <span class="text-xs text-[#52525B]">Modeled in SCAPS-1D under AM 1.5G</span>
+                      <button type="button" onclick="openResearchModal(0)" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-semibold transition-colors">
+                        <span>View Full Research Summary</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <!-- Right: Active Layer Structural Inspector -->
-            <div class="lg:col-span-6 rounded-2xl bg-white border border-[#E5E7EB] p-5 sm:p-6 space-y-4">
-              <div class="pb-3.5 border-b border-[#E5E7EB]">
-                <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#2563EB]">
-                  Layer ${selectedLayer.step} of 6 &bull; Structural Inspector
-                </span>
-                <h5 class="mt-1.5 font-display font-bold text-lg sm:text-xl text-[#171717] flex flex-wrap items-center gap-2">
-                  <span class="font-mono px-2.5 py-0.5 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] text-base">
-                    ${selectedLayer.formulaHtml}
-                  </span>
-                  <span>${escapeHtml(selectedLayer.materialName)}</span>
-                </h5>
-              </div>
-
-              <div>
-                <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Functional Role</div>
-                <div class="mt-1 text-sm font-semibold text-[#171717]">${escapeHtml(selectedLayer.role)}</div>
-              </div>
-
-              <div>
-                <div class="text-xs font-semibold uppercase tracking-wider text-[#52525B]">Function in Double-Absorber Heterostructure</div>
-                <p class="mt-1 text-sm text-[#52525B] leading-relaxed">
-                  ${escapeHtml(selectedLayer.description)}
-                </p>
-              </div>
-
-              <div class="pt-3 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
-                <span class="text-xs text-[#52525B]">Modeled in SCAPS-1D under AM 1.5G</span>
-                <button
-                  type="button"
-                  onclick="openResearchModal(0)"
-                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-semibold transition-colors"
-                >
-                  <span>View Full Research Summary</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+          </details>
+        </article>
       `;
     }
 
     function selectSolarLayer(layerId) {
       activeSolarLayerId = layerId;
       renderResearchSection();
+    }
+
+    /**
+     * RENDER ADDITIONAL DOUBLE-ABSORBER RESEARCH ENTRIES
+     */
+    function renderAdditionalResearchSection() {
+      const container = document.getElementById("additional-research-list");
+      if (!container) return;
+
+      const entries = PORTFOLIO_DATA.additionalResearch || [];
+      if (entries.length === 0) {
+        container.innerHTML = "";
+        return;
+      }
+
+      container.innerHTML = entries.map((study) => `
+        <article class="academic-card rounded-2xl overflow-hidden">
+          <div class="p-5 sm:p-6 space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#047857] text-xs font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
+                ${escapeHtml(study.simulationStatus)}
+              </span>
+              <span class="inline-flex px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+                ${escapeHtml(study.writingStatus)}
+              </span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-[#171717] leading-snug">${escapeHtml(study.title)}</h3>
+          </div>
+          <details class="research-disclosure">
+            <summary class="research-disclosure-summary">
+              <span>View research details</span>
+              <svg class="research-disclosure-chevron w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="p-5 sm:p-6 border-t border-[#E5E7EB]">
+              <h4 class="font-display font-bold text-sm text-[#171717] mb-1.5">Research Overview</h4>
+              <p class="text-sm text-[#52525B] leading-relaxed">${escapeHtml(study.summary)}</p>
+            </div>
+          </details>
+        </article>
+      `).join("");
+    }
+
+    /**
+     * RENDER THE SEPARATE UNDERGRADUATE THESIS SECTION
+     */
+    function renderThesisSection() {
+      const container = document.getElementById("thesis-container");
+      const badge = document.getElementById("section-badge-thesis");
+      if (!container) return;
+
+      const entries = PORTFOLIO_DATA.thesis || [];
+      if (badge) {
+        badge.textContent = String(entries.length);
+        badge.classList.toggle("hidden", entries.length === 0);
+        badge.classList.toggle("inline-flex", entries.length > 0);
+      }
+      if (entries.length === 0) {
+        container.innerHTML = renderEmptyStateCard();
+        return;
+      }
+
+      container.innerHTML = entries.map((study) => `
+        <article class="academic-card rounded-2xl overflow-hidden">
+          <div class="p-5 sm:p-6 space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#1D4ED8] text-xs font-semibold">
+                ${escapeHtml(study.status)}
+              </span>
+              <span class="px-3 py-1 rounded-full bg-[#F8F9FA] border border-[#E5E7EB] text-[#52525B] text-xs font-semibold">${escapeHtml(study.category)}</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-[#171717] leading-snug">${escapeHtml(study.title)}</h3>
+          </div>
+          <details class="research-disclosure">
+            <summary class="research-disclosure-summary">
+              <span>View thesis details</span>
+              <svg class="research-disclosure-chevron w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="p-5 sm:p-6 border-t border-[#E5E7EB] space-y-5">
+              <div>
+                <h4 class="font-display font-bold text-sm text-[#171717] mb-1.5">Thesis Overview</h4>
+                <p class="text-sm text-[#52525B] leading-relaxed">${escapeHtml(study.summary)}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] p-4">
+                  <div class="text-[11px] font-semibold uppercase tracking-wider text-[#52525B]">Data Approach</div>
+                  <div class="mt-1.5 text-sm font-semibold text-[#171717]">${escapeHtml(study.dataSource)}</div>
+                </div>
+                <div class="rounded-xl bg-[#F8F9FA] border border-[#E5E7EB] p-4">
+                  <div class="text-[11px] font-semibold uppercase tracking-wider text-[#52525B]">Performance Target</div>
+                  <div class="mt-1.5 text-lg font-mono font-bold text-[#171717]">${escapeHtml(study.performanceTarget)}</div>
+                  <p class="mt-1 text-xs text-[#71717A] leading-relaxed">${escapeHtml(study.targetNote)}</p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-[#E5E7EB]">
+                <div class="text-[11px] font-semibold uppercase tracking-wider text-[#52525B]">Research Objective</div>
+                <p class="mt-1.5 text-sm text-[#52525B] leading-relaxed">${escapeHtml(study.objective)}</p>
+              </div>
+            </div>
+          </details>
+        </article>
+      `).join("");
     }
 
     /**
@@ -1254,6 +1456,75 @@
     }
 
     /**
+     * RENDER PROJECT CARDS
+     * Projects remain visible even when the data array is empty, so the section
+     * is ready to use as soon as verified project details are added.
+     */
+    function renderProjectsSection() {
+      const container = document.getElementById("projects-container");
+      const badge = document.getElementById("section-badge-projects");
+      const projects = Array.isArray(PORTFOLIO_DATA.projects) ? PORTFOLIO_DATA.projects : [];
+
+      if (badge) {
+        if (projects.length > 0) {
+          badge.textContent = String(projects.length);
+          badge.classList.remove("hidden");
+          badge.classList.add("inline-flex");
+        } else {
+          badge.textContent = "";
+          badge.classList.add("hidden");
+          badge.classList.remove("inline-flex");
+        }
+      }
+
+      if (!container) return;
+      if (projects.length === 0) {
+        container.innerHTML = `
+          <div class="academic-card md:col-span-2 rounded-2xl px-6 py-8 text-center">
+            <p class="text-sm font-medium text-[#52525B]">No projects added yet.</p>
+            <p class="mt-1 text-xs text-[#71717A]">Add your project details to the <code class="font-mono">PORTFOLIO_DATA.projects</code> array in the script.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = projects.map((project) => {
+        const technologies = Array.isArray(project.technologies) ? project.technologies : [];
+        const links = [
+          { label: "GitHub Repository", url: project.githubUrl },
+          { label: "Live Demo", url: project.demoUrl },
+          { label: "Project Report", url: project.reportUrl }
+        ].filter((link) => typeof link.url === "string" && /^https?:\/\//i.test(link.url.trim()));
+
+        return `
+          <article class="academic-card rounded-2xl p-6 flex flex-col">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              ${project.category ? `<span class="inline-flex px-2.5 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] text-[11px] font-semibold">${escapeHtml(project.category)}</span>` : ""}
+              ${project.status ? `<span class="inline-flex px-2.5 py-1 rounded-full bg-[#ECFDF5] border border-[#D1FAE5] text-[#059669] text-[11px] font-semibold">${escapeHtml(project.status)}</span>` : ""}
+              ${project.date ? `<span class="text-xs font-mono text-[#52525B]">${escapeHtml(project.date)}</span>` : ""}
+            </div>
+            <h3 class="font-display font-bold text-base sm:text-lg text-[#171717] leading-snug">${escapeHtml(project.title || "Untitled Project")}</h3>
+            ${project.subtitle ? `<p class="mt-1 text-xs sm:text-sm font-medium text-[#2563EB]">${escapeHtml(project.subtitle)}</p>` : ""}
+            ${project.description ? `<p class="mt-3 text-sm text-[#52525B] leading-relaxed">${escapeHtml(project.description)}</p>` : ""}
+            ${technologies.length ? `
+              <div class="mt-4">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-[#71717A] mb-2">Tools &amp; Technologies</p>
+                <div class="flex flex-wrap gap-2">
+                  ${technologies.map((technology) => `<span class="px-2.5 py-1 rounded-lg bg-[#F8F9FA] border border-[#E5E7EB] text-xs text-[#52525B]">${escapeHtml(technology)}</span>`).join("")}
+                </div>
+              </div>
+            ` : ""}
+            ${links.length ? `
+              <div class="mt-auto pt-5 flex flex-wrap gap-x-4 gap-y-2">
+                ${links.map((link) => `<a href="${escapeHtml(link.url.trim())}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8]">${escapeHtml(link.label)} <span aria-hidden="true">↗</span></a>`).join("")}
+              </div>
+            ` : ""}
+          </article>
+        `;
+      }).join("");
+    }
+
+    /**
      * RENDER TECHNICAL TALKS & VERIFIED-EMPTY SECTIONS
      */
     function renderDynamicPortfolioSections() {
@@ -1287,9 +1558,11 @@
         `).join("");
       }
 
-      // Render empty-safe containers for Projects, Experiences, Training, Certificates, Achievements
+      // Projects have a dedicated renderer with technology tags and resource links.
+      renderProjectsSection();
+
+      // Render the remaining simple data-driven sections.
       const simpleSections = [
-        { id: "projects-container", items: PORTFOLIO_DATA.projects },
         { id: "experiences-container", items: PORTFOLIO_DATA.experiences },
         { id: "training-container", items: PORTFOLIO_DATA.training },
         { id: "certificates-container", items: PORTFOLIO_DATA.certificates },
@@ -1310,7 +1583,8 @@
               ${entry.subtitle ? `<p class="mt-1 text-xs sm:text-sm font-medium text-[#2563EB]">${escapeHtml(entry.subtitle)}</p>` : ""}
               ${entry.date ? `<p class="mt-1 text-xs font-mono text-[#52525B]">${escapeHtml(entry.date)}</p>` : ""}
               ${entry.description ? `<p class="mt-3 text-sm text-[#52525B] leading-relaxed">${escapeHtml(entry.description)}</p>` : ""}
-              ${entry.url ? `<a href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex mt-4 items-center gap-2 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8]">View certificate <span aria-hidden="true">↗</span></a>` : ""}
+              ${entry.image ? `<a href="${escapeHtml(entry.url || entry.image)}" target="_blank" rel="noopener noreferrer" class="block mt-4 rounded-xl overflow-hidden border border-[#E5E7EB] bg-[#F8F9FA]" aria-label="Open full certificate image"><img src="${escapeHtml(entry.image)}" alt="${escapeHtml(entry.title || "Certificate")}" loading="lazy" decoding="async" class="block w-full max-h-80 object-contain"></a>` : ""}
+              ${entry.url ? `<a href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex mt-4 items-center gap-2 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8]">${escapeHtml(entry.linkLabel || "View certificate")} <span aria-hidden="true">↗</span></a>` : ""}
             </article>
           `).join("") + `</div>`;
         }
@@ -1511,6 +1785,8 @@
       renderHeroSection();
       renderNavigation();
       renderResearchSection();
+      renderAdditionalResearchSection();
+      renderThesisSection();
       renderCompetenciesAndInterests();
       renderDynamicPortfolioSections();
       syncCVMarkup();
