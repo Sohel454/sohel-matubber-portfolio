@@ -177,6 +177,8 @@
       overflow: hidden;
     }
     .reference-portrait img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 20%; border-radius:25px; }
+    #nav-avatar-img, #hero-avatar-img { visibility: visible; opacity: 1; }
+    #nav-avatar-img.hidden, #hero-avatar-img.hidden { display: none !important; }
     .reference-identity { min-width:0; }
     .reference-eyebrow { color:#2563eb; font-size:11px; font-weight:800; letter-spacing:.16em; margin-bottom:8px; }
     .reference-identity h1 {
@@ -308,7 +310,11 @@
               id="nav-avatar-img"
               src="assets/Profile.png"
               alt="Sohel Matubber"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
               class="w-full h-full object-cover"
+              onload="handleAvatarLoad(this, 'nav-avatar-fallback')"
               onerror="handleAvatarError(this, 'nav-avatar-fallback')"
             />
             <span id="nav-avatar-fallback" class="hidden font-display font-bold text-xs tracking-wider text-white">SM</span>
@@ -363,6 +369,10 @@
               id="hero-avatar-img"
               src="assets/Profile.png"
               alt="Sohel Matubber"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              onload="handleAvatarLoad(this, 'hero-avatar-fallback')"
               onerror="handleAvatarError(this, 'hero-avatar-fallback')"
             />
             <div id="hero-avatar-fallback" class="hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 text-[#171717] select-none">
@@ -932,14 +942,52 @@
     /**
      * SAFE AVATAR FALLBACK HANDLER (Eliminates broken image icons if assets/Profile.png is missing)
      */
+    function handleAvatarLoad(imgEl, fallbackId) {
+      if (!imgEl) return;
+      imgEl.classList.remove("hidden");
+      imgEl.style.display = "block";
+      imgEl.style.visibility = "visible";
+      imgEl.style.opacity = "1";
+      const fallbackEl = document.getElementById(fallbackId);
+      if (fallbackEl) fallbackEl.classList.add("hidden");
+    }
+
     function handleAvatarError(imgEl, fallbackId) {
       if (!imgEl) return;
       imgEl.onerror = null;
-      imgEl.removeAttribute("src");
+      imgEl.onload = null;
       imgEl.classList.add("hidden");
       const fallbackEl = document.getElementById(fallbackId);
-      if (fallbackEl) {
-        fallbackEl.classList.remove("hidden");
+      if (fallbackEl) fallbackEl.classList.remove("hidden");
+    }
+
+    /**
+     * Set the avatar without reloading it when the HTML src already matches.
+     * This avoids a second request during DOMContentLoaded that can cause a
+     * briefly visible image to disappear on slower or cached connections.
+     */
+    function setAvatarSource(imgEl, fallbackId, source) {
+      if (!imgEl) return;
+      const safeSource = typeof source === "string" ? source.trim() : "";
+      if (!safeSource) {
+        handleAvatarError(imgEl, fallbackId);
+        return;
+      }
+
+      // Assign handlers before checking/loading the resource.
+      imgEl.onload = () => handleAvatarLoad(imgEl, fallbackId);
+      imgEl.onerror = () => handleAvatarError(imgEl, fallbackId);
+
+      // Do not reset src if the HTML already points to this exact file.
+      // Reassigning src can unnecessarily restart the image request.
+      if (imgEl.getAttribute("src") !== safeSource) {
+        imgEl.setAttribute("src", safeSource);
+      }
+
+      // Handle images that finished loading before DOMContentLoaded.
+      if (imgEl.complete) {
+        if (imgEl.naturalWidth > 0) handleAvatarLoad(imgEl, fallbackId);
+        else handleAvatarError(imgEl, fallbackId);
       }
     }
 
@@ -953,16 +1001,12 @@
       document.getElementById("hero-subtitle").textContent = d.subtitle;
       document.getElementById("hero-biography").textContent = d.biography;
 
-      // Configure avatar images cleanly
+      // Configure both avatars from one canonical source without re-requesting
+      // an image whose HTML src already matches PORTFOLIO_DATA.profilePhoto.
       const navImg = document.getElementById("nav-avatar-img");
       const heroImg = document.getElementById("hero-avatar-img");
-      if (d.profilePhoto && d.profilePhoto.trim() !== "") {
-        navImg.src = d.profilePhoto;
-        heroImg.src = d.profilePhoto;
-      } else {
-        handleAvatarError(navImg, "nav-avatar-fallback");
-        handleAvatarError(heroImg, "hero-avatar-fallback");
-      }
+      setAvatarSource(navImg, "nav-avatar-fallback", d.profilePhoto);
+      setAvatarSource(heroImg, "hero-avatar-fallback", d.profilePhoto);
 
       // Build Academic Metadata Cards (omit university card cleanly when empty)
       const metaItems = [
